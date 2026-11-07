@@ -8,15 +8,21 @@
 </head>
 <body class="items-center py-5 justify-center flex bg-[#640514] h-screen">
     <div class="pokedex border-[0.1px] bg-[#DD092D] w-[100%] max-w-[490px] h-[100%]">
-        <div class="upper polygon w-full bg-[#C10929] h-[15%]">
-
+        <div class="upper polygon flex items-center w-full bg-[#C10929] h-[15%]">
+            <div onclick="blueClick(5)" id="blue-light" class="cursor-pointer ml-10 h-20 w-20 bg-[#23abfa] border-5 border-[#DEDEDE]/50 rounded-[1000px]"></div>
+            <div class="lights flex gap-5 ml-53 mb-5">
+                <div onclick="redFlicker(3)" id="red-light" class="cursor-pointer w-8 h-8 bg-[#DD092D]/60 rounded-[100px]"></div>
+                <div onclick="yellowFlicker(3)" id="yellow-light" class="cursor-pointer w-8 h-8 bg-[#F5E851]/60 rounded-[100px]"></div>
+                <div onclick="greenFlicker(3)" id="green-light" class="cursor-pointer w-8 h-8 bg-[#5AA861]/60 rounded-[100px]"></div>
+            </div>
         </div>
     </div>
+    <script src="index.js"></script>
 </body>
 <style>
     .polygon {
         clip-path: polygon(0 0, 100% 0, 100% 70%, 60% 70%, 45% 100%, 0% 100%);
+    
     }
-
 </style>
 </html>
