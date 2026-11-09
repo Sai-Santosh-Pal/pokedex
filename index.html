@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P" rel="stylesheet">
 </head>
 <body class="items-center py-5 justify-center flex bg-[#640514] h-screen">
-    <div class="pokedex border-[0.1px] bg-[#DD092D] w-[100%] max-w-[490px] h-[100%]">
+    <div id="pokedex" class="pokedex border-[0.1px] bg-[#DD092D] w-[100%] max-w-[490px] h-[100%]">
         <div class="upper polygon flex items-center w-full bg-[#C10929] h-[15%]">
             <div onclick="blueClick(5)" id="blue-light" class="pixel cursor-pointer ml-10 h-20 w-20 bg-[#23abfa] border-5 border-[#DEDEDE]/50 rounded-[1000px]"></div>
             <div class="lights flex gap-5 ml-53 mb-5">
@@ -48,30 +48,53 @@
             </div>
         </div>
         <div class="w-full  pixel px-10 h-40 mt-25 flex items-center justify-center">
-            <div class="h-full rounded-2xl pixel w-full flex-col flex px-5 py-5  border-5 bg-[#00b140] border-[#10710C]">
+            <div class="h-full lcd rounded-2xl pixel w-full flex-col flex px-5 py-5  border-5 bg-[#00b140] border-[#10710C]">
                 <p><b>type: </b>coding</p>
                 <p><b>evolution age: </b> 16</p>
                 <p><b>fun fact: </b> uses linux btw</p>
             </div>
         </div>
         <div class="buttons mt-10 items-center gap-5 flex justify-between h-20 w-full px-10">
-            <div class="add pixel h-20 w-20 bg-black text-center text-white flex items-center justify-center rounded-[100px] cursor-pointer">+</div>
+            <div onclick="addCard()" class="add pixel h-20 w-20 bg-black text-center text-white flex items-center justify-center rounded-[100px] cursor-pointer">+</div>
             <div class="navigate flex gap-5">
-                <div class="h-13 cursor-pointer rounded-[15px] pixel w-13 bg-black flex items-center justify-center">
+                <div onclick="prevCard()" class="h-13 cursor-pointer rounded-[15px] pixel w-13 bg-black flex items-center justify-center">
                     <p class="w-full text-white text-center"><</p>
                 </div>
-                <div class="h-13 cursor-pointer w-13 rounded-[15px] pixel bg-black flex items-center justify-center">
+                <div onclick="nextCard()" class="h-13 cursor-pointer w-13 rounded-[15px] pixel bg-black flex items-center justify-center">
                     <p class="text-white w-full text-center">></p>
                 </div>
             </div>
-            
+        </div>
+    </div>
+    <div id="modal" class="hidden form-modal absolute p-2 bg-[#ca0324] top-[40%] left-[30%] h-60 w-50">
+        <div class="w-full h-10 flex justify-end  items-center">
+            <div onclick="hideModal()" class="cursor-pointer w-10 h-10 text-center p-2 bg-black text-white">X</div>
         </div>
     </div>
     <script src="index.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-analytics.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGBAne-X3pwCXN_yoUijBiGZIBaaMfQTI",
+            authDomain: "friend-dex-5c427.firebaseapp.com",
+            projectId: "friend-dex-5c427",
+            storageBucket: "friend-dex-5c427.firebasestorage.app",
+            messagingSenderId: "1042619963341",
+            appId: "1:1042619963341:web:2385c7b73d777e3e229684",
+            measurementId: "G-BCZMY9QXQL"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </body>
 <style>
     *{
         font-family: 'Press Start 2P';
+    }
+    .lcd {
+        --cell: 3px;
+        
     }
     .img-container {
         user-select: none;

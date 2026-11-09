@@ -92,6 +92,30 @@ async function greenFlicker(rep){
     }
 }
 
+function addCard() {
+    blueClick(3)
+    redFlicker(1)
+    showModal()
+}
+
+function nextCard() {
+    alert('next card')
+}
+
+function prevCard() {
+    alert('prev card')
+}
+
+function showModal() {
+    document.getElementById('modal').classList.replace('hidden', 'absolute')
+    document.getElementById('pokedex').classList.add('opacity-60')
+}
+
+function hideModal()  {
+    document.getElementById('modal').classList.replace('absolute', 'hidden')
+    document.getElementById('pokedex').classList.remove('opacity-60')
+}
+
 function pixelate(el, p = 3) {
   const cs = getComputedStyle(el), w = el.offsetWidth, h = el.offsetHeight;
   const bw = Math.round(parseFloat(cs.borderTopWidth) / p) * p, col = cs.borderTopColor;
