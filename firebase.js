@@ -21,7 +21,6 @@ document.getElementById("form").addEventListener("submit", async(e)=>{
     e.preventDefault()
     const btn = document.getElementById("submitBtn")
     btn.innerHTML = "Uploading..."
-    document.getElementById("form").reset()
     try {
         const image = document.getElementById("image").files[0]
         const formData = new FormData()
@@ -39,15 +38,17 @@ document.getElementById("form").addEventListener("submit", async(e)=>{
         const url = uploadData.data.url
         const allData = {
             url,
-            name: document.getElementById('name').value.trim(),
-            type: document.getElementById('type').value.trim(),
-            age: document.getElementById('evolution').value.trim(),
-            funfact: document.getElementById('funfact').value.trim()
+            name: document.getElementById('formname').value.trim(),
+            type: document.getElementById('formtype').value.trim(),
+            age: document.getElementById('formevolution').value.trim(),
+            funfact: document.getElementById('formfact').value.trim()
         }
 
         const dataRef = push(ref(db, "friend-dex"))
         await set(dataRef, allData)
         alert('done')
+        document.getElementById("form").reset()
+
         btn.innerHTML = "Submit"
         hideModal()
     }
@@ -89,12 +90,16 @@ function showCard() {
 }
 
 function nextCard() {
+    redFlicker(3)
+    blueClick(3)
     if (!cards.length) return
     current = (current + 1) % cards.length
     showCard()
 }
 
 function prevCard() {
+    redFlicker(3)
+    blueClick(3)
     if (!cards.length) return
     current = (current - 1 + cards.length) % cards.length
     showCard()
