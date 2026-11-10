@@ -82,8 +82,8 @@ function showCard() {
     }
     const c = cards[current]
     img.src = c.url
-    document.getElementById("name").innerHTML = c.name
-    document.getElementById("which-type").innerHTML = c.type
+    document.getElementById("name").innerHTML = c.name 
+    document.getElementById("which-type").innerHTML = c.type + " type"
     document.getElementById("type").innerHTML = c.type
     document.getElementById("age").innerHTML = c.age
     document.getElementById("funfact").innerHTML = c.funfact
