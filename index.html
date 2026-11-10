@@ -24,7 +24,7 @@
                 <div class="flex mb-13 mt-5 h-70 w-190 bg-[#292929] items-center gap-5 justify-center flex-col w-[90%] py-10 h-[80
             %] bg-[#292929]">
                 <div class="img-container">
-                    <img src="assets/img.jpeg" class="h-40 w-40 gameboy-filter">
+                    <img id="img" src="assets/img.jpeg" class="h-40 w-40 gameboy-filter">
                     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
                     <filter id="gb" color-interpolation-filters="sRGB">
                         <feColorMatrix type="matrix" values="
@@ -41,17 +41,17 @@
                     </svg>
                 </div>
                 <div class="text-center text-white">
-                    <p class="text-xl font-bold">sai</p>
-                    <p class="text-[10px] italic">coding type</p>
+                    <p id="name" class="text-xl font-bold">loading...</p>
+                    <p id="which-type" class="text-[10px] italic">loading type...</p>
                 </div>
                 </div>
             </div>
         </div>
         <div class="w-full  pixel px-10 h-40 mt-25 flex items-center justify-center">
             <div class="h-full lcd rounded-2xl pixel w-full flex-col flex px-5 py-5  border-5 bg-[#00b140] border-[#10710C]">
-                <p><b>type: </b>coding</p>
-                <p><b>evolution age: </b> 16</p>
-                <p><b>fun fact: </b> uses linux btw</p>
+                <p><b>type: </b><span id="type">...</span></p>
+                <p><b>evolution age: </b><span id="age">...</span></p>
+                <p><b>fun fact: </b><span id="funfact">...</span></p>
             </div>
         </div>
         <div class="buttons mt-10 items-center gap-5 flex justify-between h-20 w-full px-10">
@@ -66,27 +66,23 @@
             </div>
         </div>
     </div>
-    <div id="modal" class="hidden form-modal absolute p-2 bg-[#ca0324] top-[40%] left-[30%] h-60 w-50">
-        <div class="w-full h-10 flex justify-end  items-center">
+    <div id="modal" class="hidden max-w-[470px] border-1 form-modal absolute p-2 bg-[#ca0324] h-[80vh] w-[80vw] flex flex-col items-center justify-center">
+        <div class="w-full h-10 flex justify-end my-10 mr-5 items-center">
             <div onclick="hideModal()" class="cursor-pointer w-10 h-10 text-center p-2 bg-black text-white">X</div>
         </div>
+        <div class="h-full w-full max-w-[470px]">
+                <form class="flex gap-4 flex-col" id="form">
+                    <input class="outline-none py-4 px-2 border-black border-1" type="file" id="image" accept="image/*" required>
+                    <input class="outline-none py-4 px-2 border-black border-1" type="text" id="name" placeholder="name" required>
+                    <input class="outline-none py-4 px-2 border-black border-1" type="text" id="type" placeholder="type" required>
+                    <input class="outline-none py-4 px-2 border-black border-1" type="text" id="evolution" placeholder="age" required>
+                    <textarea class="outline-none py-4 px-2 border-black border-1" id="funfact" placeholder="fun fact" required></textarea>
+                    <button type="submit" class="bg-black py-4 px-7 text-white" id="submitBtn">Submit</button>
+                </form>
+            </div>
     </div>
+    <script type="module" src="firebase.js"></script>
     <script src="index.js"></script>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-analytics.js";
-        const firebaseConfig = {
-            apiKey: "AIzaSyAGBAne-X3pwCXN_yoUijBiGZIBaaMfQTI",
-            authDomain: "friend-dex-5c427.firebaseapp.com",
-            projectId: "friend-dex-5c427",
-            storageBucket: "friend-dex-5c427.firebasestorage.app",
-            messagingSenderId: "1042619963341",
-            appId: "1:1042619963341:web:2385c7b73d777e3e229684",
-            measurementId: "G-BCZMY9QXQL"
-        };
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-    </script>
 </body>
 <style>
     *{

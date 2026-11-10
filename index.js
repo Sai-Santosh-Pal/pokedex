@@ -112,6 +112,8 @@ function showModal() {
 }
 
 function hideModal()  {
+    blueClick(3)
+    redFlicker(1)
     document.getElementById('modal').classList.replace('absolute', 'hidden')
     document.getElementById('pokedex').classList.remove('opacity-60')
 }
