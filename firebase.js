@@ -74,7 +74,9 @@ onValue(ref(db, "friend-dex"), (snapshot) => {
 function showCard() {
     const img = document.getElementById("img")
     if (!cards.length) {
-        alert("no cards")
+        document.getElementById("name").innerHTML = "no cards found"
+        document.getElementById("which-type").innerHTML = "add a card to view it!"
+        img.src = "https://cdn-icons-png.flaticon.com/512/755/755014.png"
         return
     }
     const c = cards[current]
@@ -86,3 +88,16 @@ function showCard() {
     document.getElementById("funfact").innerHTML = c.funfact
 }
 
+function nextCard() {
+    if (!cards.length) return
+    current = (current + 1) % cards.length
+    showCard()
+}
+
+function prevCard() {
+    if (!cards.length) return
+    current = (current - 1 + cards.length) % cards.length
+    showCard()
+}
+
+Object.assign(window, { nextCard, prevCard, addCard, hideModal, blueClick, redFlicker, yellowFlicker, greenFlicker })

@@ -98,14 +98,6 @@ function addCard() {
     showModal()
 }
 
-function nextCard() {
-    alert('next card')
-}
-
-function prevCard() {
-    alert('prev card')
-}
-
 function showModal() {
     document.getElementById('modal').classList.replace('hidden', 'absolute')
     document.getElementById('pokedex').classList.add('opacity-60')
@@ -148,3 +140,5 @@ function pixelate(el, p = 3) {
 }
 
 document.querySelectorAll('.pixel').forEach(el => pixelate(el, 5));
+
+Object.assign(window, { nextCard, prevCard, addCard, hideModal, blueClick, redFlicker, yellowFlicker, greenFlicker })
